@@ -24,7 +24,7 @@ ground_surface = pygame.image.load('graphics/Screenshot_4.jpg').convert()
 #Ініціалазіація обєктів 
 snail_surf = pygame.image.load('graphics/Screenshot_2_2.jpg').convert_alpha()
 snail_rect = snail_surf.get_rect(bottomright = (600,300))
-snail_x_pos = 600
+
 player_surf = pygame.image.load('graphics/Screenshot_1.jpg').convert_alpha()
 player_rect = player_surf.get_rect(midbottom = (100,300))
 
@@ -55,7 +55,12 @@ while True:
     screen.blit(player_surf,player_rect)
     screen.blit(snail_surf,snail_rect)
 
-    print(player_rect.colliderect(snail_rect))
+    #if player_rect.colliderect(snail_rect):
+    #    print('collision')
+
+    mouse_pos = pygame.mouse.get_pos()
+    if player_rect.collidepoint(mouse_pos):
+        print(pygame.mouse.get_pressed())
 
     #Оновлення відображення
     pygame.display.update()
